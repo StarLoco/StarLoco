@@ -53,12 +53,12 @@ You can copy all the content from `web` folder inside `C:\Users\<your_username>\
 Run "DBeaver" through the Windows search. Login into your MySQL server using the user `root` with no password on host `127.0.0.1`.
 
 You can create 2 databases, named :
-- starloco_login
-- starloco_game
+- `starloco_login`
+- `starloco_game`
 
 Then execute a SQL file inside both of them :
-- `login.sql` which is located in login/bin in starloco_login database
-- `game.sql` which is located in game/bin in starloco_game database
+- `login.sql` which is located in `login/bin` in `starloco_login` database
+- `game.sql` which is located in `game/bin` in `starloco_game` database
 
 ## Startup
 
