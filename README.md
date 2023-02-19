@@ -7,6 +7,7 @@
 ## Prerequisite
 
 In order to run StarLoco successfully, you'll need to install these softwares :
+- Git
 - Java 8 (JRE)
 - MySQL Server 8
 - Apache Server
@@ -21,22 +22,13 @@ irm get.scoop.sh | iex
 ```
 That's done, now if you write "scoop" in your terminal, it should list all the scoop commands !
 
-### Java 8 install
-In a PowerShell terminal, enter :
-```
-scoop bucket add java
-scoop install oraclejre8
-```
-That's done, check if java is available by entering "java --version"
-
-### MySQL Server v8
-In a PowerShell terminal, enter :
+You can now install all the prerequisites by entering in your terminal theses commands :
 ```
 scoop bucket add main
+scoop bucket add java
+scoop install git
+scoop install oraclejre8
 scoop install mysql
 ```
-That's done, check if MySQL is available by entering "mysql version"
-
-### Apache Server
 
 
