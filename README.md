@@ -52,25 +52,25 @@ Now, you must have 4 directories : client, web, login and game
 
 ### Apache configuration
 
-You can copy all the content from "web" folder inside "C:\Users\<your_username>\scoop\apps\apache\htdocs"
+You can copy all the content from `web` folder inside `C:\Users\<your_username>\scoop\apps\apache\htdocs`
 
 ### MySQL configuration
 
-Run "DBeaver" through the Windows search. Login into your MySQL server using the user "root" with no password on host "127.0.0.1".
+Run "DBeaver" through the Windows search. Login into your MySQL server using the user `root` with no password on host `127.0.0.1`.
 
 You can create 2 databases, named :
 - starloco_login
 - starloco_game
 
 Then execute a SQL file inside both of them :
-- login.sql which is located in login/bin in starloco_login database
-- game.sql which is located in game/bin in starloco_game database
+- `login.sql` which is located in login/bin in starloco_login database
+- `game.sql` which is located in game/bin in starloco_game database
 
 ## Startup
 
 ### Login startup
 
-You just need to run "start.bat" file inside "login/bin"
+You just need to run `start.bat` file inside `login/bin`
 
 At the end, it must output :
 ```
@@ -81,7 +81,7 @@ At the end, it must output :
 ```
 
 ### Game startup
-You just need to run "start.bat" file inside "game/bin"
+You just need to run `start.bat` file inside `game/bin`
 
 At the end, it must output :
 ```
@@ -93,7 +93,7 @@ At the end, it must output :
 
 ### Client startup
 
-Execute "Dofus.exe" inside "client" folder and try to log-in with the user "test" with password "test".
+Execute `Dofus.exe` inside the client folder and try to log-in with the user `test` with password `test`.
 
 You should successfully get into the game !
 
