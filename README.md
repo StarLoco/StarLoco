@@ -8,15 +8,13 @@
 
 ## Prerequisite
 
-In order to run StarLoco successfully, you'll need to install these softwares :
-- Scoop
-- Git
-- Java 8 (JRE)
-- MySQL Server 8
-- DBeaver
-- Apache Server
-
-To do this, I recommend you to use [Scoop](https://scoop.sh/), a command-line installer for Windows.
+In order to run StarLoco successfully, we're going to guide you on how to install these softwares :
+- [Scoop](https://scoop.sh/), a command-line installer for Windows.
+- [Git](https://git-scm.com/)
+- [Java 8 (JRE)](https://www.java.com/fr/download/manual.jsp)
+- [MySQL Server 8](https://dev.mysql.com/downloads/mysql/)
+- [DBeaver](https://dbeaver.io/)
+- [Apache Server](https://httpd.apache.org/download.cgi)
 
 ### Scoop install
 Open a PowerShell terminal, and enter :
@@ -26,16 +24,12 @@ irm get.scoop.sh | iex
 ```
 That's done, now if you write "scoop" in your terminal, it should list all the scoop commands !
 
-You can now install all the prerequisites by entering in your terminal theses commands :
+You can now install all the prerequisites by entering in your terminal theses commands, one by one :
 ```
 scoop bucket add main
 scoop bucket add java
 scoop bucket add extras
-scoop install git
-scoop install oraclejre8
-scoop install mysql
-scoop install apache
-scoop install dbeaver
+scoop install git oraclejre8 mysql apache dbeaver
 ```
 
 The applications are installed in your user directory : C:\Users\<your_username>\scoop\apps
