@@ -43,12 +43,12 @@ The applications are installed in your user directory : C:\Users\<your_username>
 ## Configuration
 
 Before doing anything, please clone the following repository on your desktop :
-- Dofus client : git clone https://github.com/StarLoco/StarLoco-Client.git client
-- StarLoco Login : git clone https://github.com/StarLoco/StarLoco-Login.git login
-- StarLoco Game : git clone https://github.com/StarLoco/StarLoco-Game.git game
-- Web : git clone https://github.com/StarLoco/StarLoco-Web.git web
+- Dofus client : `git clone https://github.com/StarLoco/StarLoco-Client.git client`
+- StarLoco Login : `git clone https://github.com/StarLoco/StarLoco-Login.git login`
+- StarLoco Game : `git clone https://github.com/StarLoco/StarLoco-Game.git game`
+- Web : `git clone https://github.com/StarLoco/StarLoco-Web.git web`
 
-Now, you must have 4 directories : client, web, login and game
+Now, you must have 4 directories : `client`, `web`, `login` and `game`.
 
 ### Apache configuration
 
