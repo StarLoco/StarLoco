@@ -61,7 +61,7 @@ Now, on your desktop, inside a folder named `StarLoco`, you must found 4 directo
 
 ### Apache configuration
 
-You can copy all the content from `web` folder inside `C:\Users\<your_username>\scoop\apps\apache\current\htdocs`
+You can copy the folder `lang` from `web` folder inside `C:\Users\<your_username>\scoop\apps\apache\current\htdocs`
 
 ### MySQL configuration
 
