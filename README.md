@@ -6,7 +6,7 @@
 - [Startup](#startup)
 - [Community](#community)
 
-## Prerequisite
+## Introduction
 
 During this tutorial, we will install multiple softwares necessary for the proper functioning of the emulator. 
 These installations will be done by command line entry under PowerShell.
