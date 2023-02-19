@@ -1,14 +1,17 @@
 # StarLoco Guide
 
 ## Summary
-- [Prerequisite](#prerequisiteg)
+- [Introduction](#introduction)
 - [Configuration](#configuration)
 - [Startup](#startup)
 - [Community](#community)
 
 ## Prerequisite
 
-In order to run StarLoco successfully, we're going to guide you on how to install these softwares :
+During this tutorial, we will install multiple softwares necessary for the proper functioning of the emulator. 
+These installations will be done by command line entry under PowerShell.
+
+List of the softwares :
 - [Scoop](https://scoop.sh/), a command-line installer for Windows.
 - [Git](https://git-scm.com/)
 - [Java 8 (JRE)](https://www.java.com/fr/download/manual.jsp)
