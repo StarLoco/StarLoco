@@ -1,9 +1,10 @@
 # StarLoco Guide
 
 ## Summary
-- Prerequisite
-- Configuration
-- Startup
+- [Prerequisite](#prerequisiteg)
+- [Configuration](#configuration)
+- [Startup](#startup)
+- [Community](#community)
 
 ## Prerequisite
 
@@ -92,8 +93,15 @@ At the end, it must output :
 
 ### Client startup
 
-Execute "Dofus.exe" inside "client" folder.
+Execute "Dofus.exe" inside "client" folder and try to log-in with the user "test" with password "test".
 
+You should successfully get into the game !
+
+## Community
+
+If you've any error or difficulty to run something, please ask the community on this discord server.
+
+![Discord Banner 2](https://discordapp.com/api/guilds/856945561421086730/widget.png?style=banner2)
 
 
 
