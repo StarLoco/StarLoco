@@ -17,7 +17,7 @@ In order to run StarLoco successfully, we're going to guide you on how to instal
 - [Apache Server](https://httpd.apache.org/download.cgi)
 
 ### Scoop install
-Open a PowerShell terminal, and enter :
+Open a PowerShell (included in Windows) terminal using the Windows search, and enter :
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
