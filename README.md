@@ -36,20 +36,23 @@ The applications are installed in your user directory : C:\Users\<your_username>
 
 ## Configuration
 
-Open a PowerShell terminal (included in Windows) using the Windows search, and enter :
-> cd ~/Desktop
-> mkdir StarLoco
-> cd StarLoco
+Open a PowerShell terminal (included in Windows) using the Windows search, and enter, one by one :
+```
+cd ~/Desktop
+mkdir StarLoco
+cd StarLoco
+```
+
 
 You can now clone the following repositories :
-- Dofus client
-> `git clone https://github.com/StarLoco/StarLoco-Client.git client`
-- StarLoco Login
-> `git clone https://github.com/StarLoco/StarLoco-Login.git login`
-- StarLoco Game
-> `git clone https://github.com/StarLoco/StarLoco-Game.git game`
-- Web
-> `git clone https://github.com/StarLoco/StarLoco-Web.git web`
+- Dofus client :
+`git clone https://github.com/StarLoco/StarLoco-Client.git client`
+- StarLoco Login :
+`git clone https://github.com/StarLoco/StarLoco-Login.git login`
+- StarLoco Game :
+`git clone https://github.com/StarLoco/StarLoco-Game.git game`
+- Web :
+`git clone https://github.com/StarLoco/StarLoco-Web.git web`
 
 Now, on your desktop, inside a folder named `StarLoco`, you must found 4 directories : `client`, `web`, `login` and `game`.
 
