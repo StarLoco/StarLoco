@@ -6,6 +6,10 @@ First, you've to download [this archive](https://github.com/StarLoco/StarLoco/ar
 
 Finally, you just have to execute **StarLoco-Installer.exe** or execute the powershell script **StarLoco-Installer.ps1**
 
+You can use the test account especially created for you :
+- Username : test
+- Password : test
+
 ## Community
 
 If you've any error or difficulty to run something, please ask the community on discord or create an issue.
