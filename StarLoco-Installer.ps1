@@ -14,8 +14,14 @@ scoop install git
 scoop bucket add main
 scoop bucket add java
 scoop bucket add extras
+scoop bucket add versions
 Write-Host "Install scoop apps"
-scoop install sudo oraclejre8 mariadb apache dbeaver
+scoop install oraclejre8 mariadb apache php dbeaver
+iex (new-object net.webclient).downloadstring('https://gist.githubusercontent.com/lukesampson/6546858/raw/015e8bdfbfda8e571f556863f44e7b3df29f773b/apache-php-init.ps1')
+
+Copy-Item -Path ./config/httpd.conf -Destination ~/scoop/apps/apache/current/conf/httpd.conf -Force
+Copy-Item -Path ./config/php.ini -Destination ~/scoop/apps/php/current/php.ini -Force
+
 
 # Locate global folder
 cd $Desktop
@@ -46,18 +52,21 @@ If (-Not (Test-Path -Path "./web")) {
 }
 
 # Create and start Apache service (will run automatically after a reboot)
-Write-Host "Install and start Apache2 service"
-sudo httpd.exe -k install
-sudo Start-Service -Name "Apache2.4"
+Write-Host "Install Apache2 service"
+httpd -k install -n apache
+Write-Host "Start Apache2 service"
+Start-Service -Name "Apache2.4"
 
 # Copy lang files from web repository to apache public folder
 Write-Host "Copy web folder content into Apache2 htdocs"
 Copy-Item -Path $Desktop/StarLoco/web/* -Destination ~/scoop/apps/apache/current/htdocs/ -Recurse -Force
+Remove-Item  ~/scoop/apps/apache/current/htdocs/index.html
 
 # Create and start MySQL service (will run automatically after a reboot)
-Write-Host "Install and start MariaDB service"
-sudo mysqld --install
-sudo Start-Service -Name "MySQL"
+Write-Host "Install MariaDB service"
+mysqld --install
+Write-Host "Start MariaDB service"
+Start-Service -Name "MySQL"
 
 # Create both database login & game
 mysql -u root -e 'CREATE DATABASE starloco_login; CREATE DATABASE starloco_game;'
