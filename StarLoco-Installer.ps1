@@ -71,13 +71,13 @@ Start-Service -Name "MySQL"
 # Create both database login & game
 mysql -u root -e 'CREATE DATABASE starloco_login; CREATE DATABASE starloco_game;'
 # Run login SQL script into login database
-mysql -u root -D starloco_login -e "source $Desktop/StarLoco/login/bin/login.sql"
+mysql -u root -D starloco_login -e "source $Desktop/StarLoco/login/login.sql"
 # Run game SQL script into game database
-mysql -u root -D starloco_game -e "source $Desktop/StarLoco/game/bin/game.sql"
+mysql -u root -D starloco_game -e "source $Desktop/StarLoco/game/game.sql"
 
-cd $Desktop/StarLoco/login/bin
+cd $Desktop/StarLoco/login
 Start start.bat
-cd $Desktop/StarLoco/game/bin
+cd $Desktop/StarLoco/game
 Start start.bat
 
 Start-Sleep -Seconds 3
