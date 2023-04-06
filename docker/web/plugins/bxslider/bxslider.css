@@ -1,0 +1,124 @@
+/** RESET AND LAYOUT
+===================================*/
+
+.bxslider-wrapper {
+	background: #FFF;
+	padding: 0 0 20px 0;
+	position: relative;
+	margin-top: -15px;
+}
+.bxslider {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	*zoom: 1;
+	float:left;
+	width: 100%;
+}
+.bxslider .img .caption {
+	color: #FFF;
+	display: inline-block;
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	padding: 10px;
+	text-align: right;
+}
+.bxslider .img .caption h2 {
+	background: #FFF;
+	font: 35px 'BebasNeue', Arial, sans-serif;
+	padding: 5px 10px;
+	display: inline-block;
+	margin-bottom: 10px;
+	color: #1b1b1b;
+}
+.bxslider .img .caption h1 {
+	background: #FFF;
+	font: 35px 'BebasNeue', Arial, sans-serif;
+	margin: 0;
+	padding: 5px 10px;
+	display: inline-block;
+}
+.bxslider .img .caption p {
+	background: #000;
+	padding: 10px 15px;
+	margin-top: 10px;
+	display: inline-block;
+	max-width: 450px;
+	color: #FFF;
+}
+.bx-wrapper img {
+	width: 100%;
+	display: block;
+}
+.bx-prev:before {
+	content: "\f053";
+}
+.bx-prev {
+	left: 0;
+}
+.bx-next {
+	left: 32px;
+}
+.bx-next:before {
+	content: "\f054";
+}
+.bx-controls-direction a {
+	position: absolute;
+	bottom: 20px;
+	z-index: 99;
+	background: #2b2b2b;
+	padding: 13px;
+	font-family: 'FontAwesome';
+	color: #FFF; 
+	font-size: 11px;
+}
+
+/** THEME
+===================================*/
+#bx-tabs {
+	padding: 0;
+	border-bottom: 5px solid #2b2b2b;
+}
+#bx-tabs .bx-nav:first-child{
+	border-left: 0;
+}
+#bx-tabs .bx-nav:last-child{
+	border-right: 0;
+}
+#bx-tabs .bx-nav {
+	border-left: 1px solid #dddddd;
+}
+#bx-tabs .bx-section {
+	padding: 15px 17px;
+	background: #FFF;
+	color: #282828;
+}
+#bx-tabs .active h3 {
+	color:#FFF;
+}
+#bx-tabs a h3 {
+	font: 11px arial, sans-serif;
+	color: #646464;
+	font-weight: bold!important;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+/* IMAGE CAPTIONS */
+
+.bx-wrapper .bx-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #666\9;
+	background: rgba(80, 80, 80, 0.75);
+	width: 100%;
+}
+.bx-wrapper .bx-caption span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: .85em;
+	padding: 10px;
+}

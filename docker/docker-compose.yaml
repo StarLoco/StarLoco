@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+    starloco_login:
+        image: login:latest
+        restart: always
+        depends_on:
+            - starloco_database
+        ports:
+            - '450:450'
+        volumes:
+            - ./config/login.config.properties:/app/login.config.properties
+            
+    starloco_game:
+        image: game:latest
+        restart: always
+        depends_on:
+            - starloco_database
+        ports:
+            - '5555:5555'
+        volumes:
+            - ./config/game.config.properties:/app/game.config.properties
+            
+    starloco_web:
+        image: nginx:latest
+        restart: always
+        depends_on:
+            - starloco_database
+        ports:
+            - '80:80'
+        volumes:
+            - ./web:/var/www/html
+            - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - php-fpm
+            
+    php-fpm:
+        image: starloco/php8-fpm:latest
+        restart: always
+        depends_on:
+            - starloco_database
+        volumes:
+            - ./web:/var/www/html
+            
+    starloco_database:
+        image: mariadb:10.7
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: CYoEw5SaBv1kIk
+        ports:
+            - '3306:3306'
+        volumes: 
+            - dbdata:/var/lib/mysql
+            - ./database/init:/docker-entrypoint-initdb.d/:ro
+
+    starloco_adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+
+volumes:
+    dbdata:
