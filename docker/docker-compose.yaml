@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     starloco_login:
-        image: login:latest
+        image: starloco/login:latest
         restart: always
         depends_on:
             - starloco_database
@@ -12,7 +12,7 @@ services:
             - ./config/login.config.properties:/app/login.config.properties
             
     starloco_game:
-        image: game:latest
+        image: starloco/game:latest
         restart: always
         depends_on:
             - starloco_database
