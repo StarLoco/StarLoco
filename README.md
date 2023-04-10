@@ -2,7 +2,7 @@
 
 ## Introduction
 
-StarLoco's the most advanced public emulator of Dofus 1.29.1 / 1.37.10 written in Java. It's made to be ready to play.
+StarLoco's the most advanced public emulator of Dofus 1.39.8 written in Java. It's made to be ready to play.
 
 ## How to use ?
 
