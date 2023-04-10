@@ -1,18 +1,16 @@
-USE starloco_login;
-
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : StarLoco
-Source Server Version : 80031
+Source Server         : Paradizz
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : starloco_login
 
 Target Server Type    : MYSQL
-Target Server Version : 80031
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-04-06 03:01:40
+Date: 2023-04-10 10:23:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +22,7 @@ DROP TABLE IF EXISTS `administration_ban_ip`;
 CREATE TABLE `administration_ban_ip` (
   `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of administration_ban_ip
@@ -35,12 +33,12 @@ CREATE TABLE `administration_ban_ip` (
 -- ----------------------------
 DROP TABLE IF EXISTS `administration_commands`;
 CREATE TABLE `administration_commands` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `command` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `args` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `args` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of administration_commands
@@ -207,13 +205,13 @@ INSERT INTO `administration_commands` VALUES ('168', 'ENDFIGHTNULL', null, 'Endf
 -- ----------------------------
 DROP TABLE IF EXISTS `administration_groups`;
 CREATE TABLE `administration_groups` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `isPlayer` tinyint NOT NULL,
-  `inLadder` tinyint NOT NULL,
+  `isPlayer` tinyint(4) NOT NULL,
+  `inLadder` tinyint(4) NOT NULL,
   `commands` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of administration_groups
@@ -236,14 +234,14 @@ INSERT INTO `administration_groups` VALUES ('12', 'Debugueur', '0', '0', '1,4,6,
 -- ----------------------------
 DROP TABLE IF EXISTS `client_rss_news`;
 CREATE TABLE `client_rss_news` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `title_fr` varchar(50) NOT NULL DEFAULT '',
   `title_en` varchar(50) NOT NULL DEFAULT '',
-  `date` bigint NOT NULL,
+  `date` bigint(20) NOT NULL,
   `icon` text NOT NULL,
   `link` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of client_rss_news
@@ -254,11 +252,11 @@ CREATE TABLE `client_rss_news` (
 -- ----------------------------
 DROP TABLE IF EXISTS `website_shop_categories`;
 CREATE TABLE `website_shop_categories` (
-  `id` tinyint NOT NULL,
+  `id` tinyint(4) NOT NULL,
   `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `active` int NOT NULL DEFAULT '1',
+  `active` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of website_shop_categories
@@ -306,14 +304,14 @@ INSERT INTO `website_shop_categories` VALUES ('127', 'Potion métier 100k exp', 
 DROP TABLE IF EXISTS `website_shop_objects`;
 CREATE TABLE `website_shop_objects` (
   `name` text NOT NULL,
-  `template` int NOT NULL,
-  `jp` tinyint(1) NOT NULL DEFAULT '0',
-  `price` int NOT NULL DEFAULT '1000000',
-  `category` int NOT NULL DEFAULT '-1',
+  `template` int(11) NOT NULL,
+  `jp` tinyint(1) NOT NULL DEFAULT 0,
+  `price` int(11) NOT NULL DEFAULT 1000000,
+  `category` int(11) NOT NULL DEFAULT -1,
   `server` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '1',
-  `active` int NOT NULL DEFAULT '0',
+  `active` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`template`,`server`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of website_shop_objects
@@ -773,12 +771,12 @@ INSERT INTO `website_shop_objects` VALUES ('Coffre de point Boutique', '26012', 
 -- ----------------------------
 DROP TABLE IF EXISTS `website_shop_objects_purchases`;
 CREATE TABLE `website_shop_objects_purchases` (
-  `account` int DEFAULT NULL,
-  `template` int DEFAULT NULL,
-  `quantite` int NOT NULL DEFAULT '1',
-  `server` int DEFAULT NULL,
+  `account` int(11) DEFAULT NULL,
+  `template` int(11) DEFAULT NULL,
+  `quantite` int(11) NOT NULL DEFAULT 1,
+  `server` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of website_shop_objects_purchases
@@ -789,15 +787,15 @@ CREATE TABLE `website_shop_objects_purchases` (
 -- ----------------------------
 DROP TABLE IF EXISTS `website_shop_objects_templates`;
 CREATE TABLE `website_shop_objects_templates` (
-  `id` int NOT NULL DEFAULT '0',
-  `type` int NOT NULL DEFAULT '0',
-  `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `skin` int DEFAULT NULL,
-  `level` int DEFAULT NULL,
-  `effects` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `id` int(11) NOT NULL DEFAULT 0,
+  `type` int(11) NOT NULL DEFAULT 0,
+  `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `skin` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  `effects` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of website_shop_objects_templates
@@ -10339,12 +10337,12 @@ INSERT INTO `website_shop_objects_templates` VALUES ('26012', '12', 'Coffre de p
 DROP TABLE IF EXISTS `website_shop_points_purchases`;
 CREATE TABLE `website_shop_points_purchases` (
   `account` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `points` int NOT NULL DEFAULT '0',
+  `points` int(11) NOT NULL DEFAULT 0,
   `code` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `pays` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `type` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `pays` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `type` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `date` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of website_shop_points_purchases
@@ -10355,7 +10353,7 @@ CREATE TABLE `website_shop_points_purchases` (
 -- ----------------------------
 DROP TABLE IF EXISTS `website_timeline_news`;
 CREATE TABLE `website_timeline_news` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(50) NOT NULL,
   `title` varchar(100) NOT NULL,
   `title_en` varchar(100) NOT NULL,
@@ -10366,7 +10364,7 @@ CREATE TABLE `website_timeline_news` (
   `date` datetime NOT NULL,
   `img` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of website_timeline_news
@@ -10377,13 +10375,13 @@ CREATE TABLE `website_timeline_news` (
 -- ----------------------------
 DROP TABLE IF EXISTS `website_timeline_news_comments`;
 CREATE TABLE `website_timeline_news_comments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_news` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_news` int(11) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of website_timeline_news_comments
@@ -10395,8 +10393,8 @@ CREATE TABLE `website_timeline_news_comments` (
 DROP TABLE IF EXISTS `website_users_votes`;
 CREATE TABLE `website_users_votes` (
   `ip` varchar(20) NOT NULL,
-  `date` bigint NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `date` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of website_users_votes
@@ -10407,40 +10405,40 @@ CREATE TABLE `website_users_votes` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_accounts`;
 CREATE TABLE `world_accounts` (
-  `guid` int NOT NULL AUTO_INCREMENT,
+  `guid` int(11) NOT NULL AUTO_INCREMENT,
   `account` varchar(30) DEFAULT NULL,
-  `pass` text,
-  `muteTime` int NOT NULL DEFAULT '0',
+  `pass` text DEFAULT NULL,
+  `muteTime` int(11) NOT NULL DEFAULT 0,
   `email` varchar(100) DEFAULT NULL,
   `lastIP` varchar(25) DEFAULT NULL,
   `lastConnectionDate` varchar(100) DEFAULT NULL,
-  `migration` tinyint(1) NOT NULL DEFAULT '0',
+  `migration` tinyint(1) NOT NULL DEFAULT 0,
   `question` varchar(100) NOT NULL DEFAULT 'supprimer ?',
   `reponse` varchar(100) NOT NULL DEFAULT 'oui',
   `pseudo` varchar(30) DEFAULT NULL,
-  `banned` tinyint NOT NULL DEFAULT '0',
-  `bannedTime` bigint NOT NULL DEFAULT '0',
-  `reload_needed` tinyint(1) DEFAULT '1',
+  `banned` tinyint(4) NOT NULL DEFAULT 0,
+  `bannedTime` bigint(20) NOT NULL DEFAULT 0,
+  `reload_needed` tinyint(1) DEFAULT 1,
   `friends` varchar(255) DEFAULT NULL,
   `enemy` varchar(255) DEFAULT NULL,
-  `points` int NOT NULL DEFAULT '0',
-  `logged` int NOT NULL DEFAULT '0',
-  `subscribe` bigint NOT NULL DEFAULT '0',
-  `vip` int NOT NULL DEFAULT '0',
-  `muteRaison` text,
-  `mutePseudo` text,
-  `lastConnectDay` text,
+  `points` int(11) NOT NULL DEFAULT 0,
+  `logged` int(11) NOT NULL DEFAULT 0,
+  `subscribe` bigint(20) NOT NULL DEFAULT 0,
+  `vip` int(11) NOT NULL DEFAULT 0,
+  `muteRaison` text DEFAULT NULL,
+  `mutePseudo` text DEFAULT NULL,
+  `lastConnectDay` text DEFAULT NULL,
   `dateRegister` varchar(10) DEFAULT NULL,
   `lastVoteIP` varchar(255) DEFAULT NULL,
-  `heurevote` bigint NOT NULL DEFAULT '0',
-  `totalVotes` int NOT NULL DEFAULT '0',
-  `twitter` text,
-  `facebook` text,
-  `google` text,
-  `votes` int NOT NULL DEFAULT '0',
+  `heurevote` bigint(20) NOT NULL DEFAULT 0,
+  `totalVotes` int(11) NOT NULL DEFAULT 0,
+  `twitter` text DEFAULT NULL,
+  `facebook` text DEFAULT NULL,
+  `google` text DEFAULT NULL,
+  `votes` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`guid`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of world_accounts
@@ -10454,12 +10452,12 @@ INSERT INTO `world_accounts` VALUES ('3', 'test3', 'edbd881f1ee2f76ba0bd70fd184f
 -- ----------------------------
 DROP TABLE IF EXISTS `world_base_areas`;
 CREATE TABLE `world_base_areas` (
-  `id` int NOT NULL,
-  `superarea` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `superarea` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_base_areas
@@ -10523,15 +10521,15 @@ INSERT INTO `world_base_areas` VALUES ('2000', '0', 'Île Maudite');
 -- ----------------------------
 DROP TABLE IF EXISTS `world_base_houses`;
 CREATE TABLE `world_base_houses` (
-  `id` int unsigned NOT NULL,
-  `map_id` int unsigned NOT NULL DEFAULT '0',
-  `cell_id` int unsigned NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL,
+  `map_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `cell_id` int(10) unsigned NOT NULL DEFAULT 0,
   `saleBase` text NOT NULL,
-  `mapid` int NOT NULL DEFAULT '0',
-  `caseid` int NOT NULL DEFAULT '0',
+  `mapid` int(11) NOT NULL DEFAULT 0,
+  `caseid` int(11) NOT NULL DEFAULT 0,
   `maps` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`,`map_id`,`cell_id`,`mapid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_base_houses
@@ -11596,16 +11594,16 @@ INSERT INTO `world_base_houses` VALUES ('932', '11233', '198', '4000000', '11341
 -- ----------------------------
 DROP TABLE IF EXISTS `world_base_mountparks`;
 CREATE TABLE `world_base_mountparks` (
-  `mapid` int NOT NULL,
-  `cellid` int NOT NULL,
-  `size` int NOT NULL,
-  `sizeObj` int NOT NULL,
-  `priceBase` int NOT NULL,
-  `cellMount` int NOT NULL,
-  `cellPorte` int NOT NULL,
+  `mapid` int(11) NOT NULL,
+  `cellid` int(11) NOT NULL,
+  `size` int(11) NOT NULL,
+  `sizeObj` int(11) NOT NULL,
+  `priceBase` int(11) NOT NULL,
+  `cellMount` int(11) NOT NULL,
+  `cellPorte` int(11) NOT NULL,
   `cellEnclos` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`mapid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_base_mountparks
@@ -12068,12 +12066,12 @@ INSERT INTO `world_base_mountparks` VALUES ('20015', '402', '10', '10', '2150000
 -- ----------------------------
 DROP TABLE IF EXISTS `world_base_sub_areas`;
 CREATE TABLE `world_base_sub_areas` (
-  `id` int NOT NULL,
-  `area` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `area` int(11) NOT NULL,
   `name` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nearest_sub_areas` varchar(200) NOT NULL DEFAULT '',
   KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_base_sub_areas
@@ -12461,12 +12459,12 @@ INSERT INTO `world_base_sub_areas` VALUES ('1050', '2000', 'Marécages Profonds'
 -- ----------------------------
 DROP TABLE IF EXISTS `world_base_trunks`;
 CREATE TABLE `world_base_trunks` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_house` int NOT NULL,
-  `mapid` int NOT NULL,
-  `cellid` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_house` int(11) NOT NULL,
+  `mapid` int(11) NOT NULL,
+  `cellid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=333 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=333 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_base_trunks
@@ -12820,15 +12818,15 @@ INSERT INTO `world_base_trunks` VALUES ('332', '1157', '11804', '99');
 -- ----------------------------
 DROP TABLE IF EXISTS `world_event_type`;
 CREATE TABLE `world_event_type` (
-  `id` int NOT NULL,
-  `maxPlayers` int NOT NULL DEFAULT '8',
+  `id` int(11) NOT NULL,
+  `maxPlayers` int(11) NOT NULL DEFAULT 8,
   `name` text NOT NULL,
   `description` text NOT NULL,
   `firstWinner` varchar(255) NOT NULL DEFAULT '',
   `secondWinner` varchar(255) NOT NULL DEFAULT '',
   `thirdWinner` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of world_event_type
@@ -12839,19 +12837,19 @@ CREATE TABLE `world_event_type` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_guilds`;
 CREATE TABLE `world_guilds` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `emblem` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `lvl` int NOT NULL DEFAULT '1',
-  `xp` bigint NOT NULL DEFAULT '0',
-  `capital` int NOT NULL DEFAULT '0',
-  `maxCollectors` int NOT NULL DEFAULT '1',
+  `lvl` int(11) NOT NULL DEFAULT 1,
+  `xp` bigint(20) NOT NULL DEFAULT 0,
+  `capital` int(11) NOT NULL DEFAULT 0,
+  `maxCollectors` int(11) NOT NULL DEFAULT 1,
   `spells` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '462;0|461;0|460;0|459;0|458;0|457;0|456;0|455;0|454;0|453;0|452;0|451;0|',
   `stats` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '176;100|158;1000|124;100|',
-  `date` bigint NOT NULL,
+  `date` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_guilds
@@ -12862,33 +12860,33 @@ CREATE TABLE `world_guilds` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_mounts`;
 CREATE TABLE `world_mounts` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `color` int NOT NULL,
-  `sex` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `color` int(11) NOT NULL,
+  `sex` int(11) NOT NULL,
   `name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `xp` int NOT NULL,
-  `level` int NOT NULL,
-  `endurance` int NOT NULL,
-  `amour` int NOT NULL,
-  `maturity` int NOT NULL,
-  `serenity` int NOT NULL,
-  `reproductions` int NOT NULL,
-  `fatigue` int NOT NULL,
-  `energy` int NOT NULL,
+  `xp` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `endurance` int(11) NOT NULL,
+  `amour` int(11) NOT NULL,
+  `maturity` int(11) NOT NULL,
+  `serenity` int(11) NOT NULL,
+  `reproductions` int(11) NOT NULL,
+  `fatigue` int(11) NOT NULL,
+  `energy` int(11) NOT NULL,
   `objects` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `ancestors` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT ',,,,,,,,,,,,,',
   `capacitys` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '0',
-  `size` int NOT NULL,
-  `map` int NOT NULL,
-  `cell` int NOT NULL,
+  `size` int(11) NOT NULL,
+  `map` int(11) NOT NULL,
+  `cell` int(11) NOT NULL,
   `owner` int(11) unsigned zerofill NOT NULL,
-  `orientation` int NOT NULL,
-  `fecundatedDate` bigint NOT NULL,
-  `couple` int NOT NULL,
-  `savage` int NOT NULL,
+  `orientation` int(11) NOT NULL,
+  `fecundatedDate` bigint(20) NOT NULL,
+  `couple` int(11) NOT NULL,
+  `savage` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_mounts
@@ -12899,14 +12897,14 @@ CREATE TABLE `world_mounts` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_objects`;
 CREATE TABLE `world_objects` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `template` int NOT NULL,
-  `quantity` int NOT NULL,
-  `position` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `template` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `position` int(11) NOT NULL,
   `stats` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `puit` int NOT NULL DEFAULT '0',
+  `puit` int(11) NOT NULL DEFAULT 0,
   UNIQUE KEY `guid` (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_objects
@@ -12917,9 +12915,9 @@ CREATE TABLE `world_objects` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_obvijevans`;
 CREATE TABLE `world_obvijevans` (
-  `id` int NOT NULL,
-  `template` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `id` int(11) NOT NULL,
+  `template` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_obvijevans
@@ -12930,16 +12928,16 @@ CREATE TABLE `world_obvijevans` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_pets`;
 CREATE TABLE `world_pets` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `template` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `template` int(11) NOT NULL,
   `lastEatDate` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `quantityEat` int NOT NULL,
-  `pdv` int NOT NULL,
-  `corpulence` int NOT NULL,
-  `isEPO` int NOT NULL DEFAULT '0',
+  `quantityEat` int(11) NOT NULL,
+  `pdv` int(11) NOT NULL,
+  `corpulence` int(11) NOT NULL,
+  `isEPO` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_pets
@@ -12950,69 +12948,69 @@ CREATE TABLE `world_pets` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_players`;
 CREATE TABLE `world_players` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `account` int NOT NULL,
-  `groupe` int NOT NULL DEFAULT '0',
-  `sexe` tinyint NOT NULL,
-  `class` smallint NOT NULL,
-  `color1` int NOT NULL,
-  `color2` int NOT NULL,
-  `color3` int NOT NULL,
-  `kamas` bigint NOT NULL,
-  `spellboost` int NOT NULL,
-  `capital` int NOT NULL,
-  `energy` int NOT NULL DEFAULT '10000',
-  `level` int NOT NULL,
-  `xp` bigint NOT NULL DEFAULT '0',
-  `size` int NOT NULL,
-  `gfx` int NOT NULL,
-  `alignement` int NOT NULL DEFAULT '0',
-  `honor` int NOT NULL DEFAULT '0',
-  `deshonor` int NOT NULL DEFAULT '0',
-  `alvl` int NOT NULL DEFAULT '0' COMMENT 'Niveau alignement',
-  `vitalite` int NOT NULL DEFAULT '101',
-  `force` int NOT NULL DEFAULT '101',
-  `sagesse` int NOT NULL DEFAULT '101',
-  `intelligence` int NOT NULL DEFAULT '101',
-  `chance` int NOT NULL DEFAULT '101',
-  `agilite` int NOT NULL DEFAULT '101',
-  `seeFriend` tinyint NOT NULL DEFAULT '1',
-  `seeAlign` tinyint NOT NULL DEFAULT '0',
-  `seeSeller` tinyint NOT NULL DEFAULT '0',
+  `account` int(11) NOT NULL,
+  `groupe` int(11) NOT NULL DEFAULT 0,
+  `sexe` tinyint(4) NOT NULL,
+  `class` smallint(6) NOT NULL,
+  `color1` int(11) NOT NULL,
+  `color2` int(11) NOT NULL,
+  `color3` int(11) NOT NULL,
+  `kamas` bigint(20) NOT NULL,
+  `spellboost` int(11) NOT NULL,
+  `capital` int(11) NOT NULL,
+  `energy` int(11) NOT NULL DEFAULT 10000,
+  `level` int(11) NOT NULL,
+  `xp` bigint(20) NOT NULL DEFAULT 0,
+  `size` int(11) NOT NULL,
+  `gfx` int(11) NOT NULL,
+  `alignement` int(11) NOT NULL DEFAULT 0,
+  `honor` int(11) NOT NULL DEFAULT 0,
+  `deshonor` int(11) NOT NULL DEFAULT 0,
+  `alvl` int(11) NOT NULL DEFAULT 0 COMMENT 'Niveau alignement',
+  `vitalite` int(11) NOT NULL DEFAULT 101,
+  `force` int(11) NOT NULL DEFAULT 101,
+  `sagesse` int(11) NOT NULL DEFAULT 101,
+  `intelligence` int(11) NOT NULL DEFAULT 101,
+  `chance` int(11) NOT NULL DEFAULT 101,
+  `agilite` int(11) NOT NULL DEFAULT 101,
+  `seeFriend` tinyint(4) NOT NULL DEFAULT 1,
+  `seeAlign` tinyint(4) NOT NULL DEFAULT 0,
+  `seeSeller` tinyint(4) NOT NULL DEFAULT 0,
   `canaux` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '*#%!pi$:?',
-  `map` int NOT NULL,
-  `cell` int NOT NULL,
-  `pdvper` int NOT NULL DEFAULT '100',
+  `map` int(11) NOT NULL,
+  `cell` int(11) NOT NULL,
+  `pdvper` int(11) NOT NULL DEFAULT 100,
   `spells` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `objets` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `storeObjets` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `savepos` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '10298,314',
   `zaaps` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
   `jobs` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
-  `mountxpgive` int NOT NULL DEFAULT '0',
-  `mount` int NOT NULL DEFAULT '-1',
-  `title` int NOT NULL DEFAULT '0',
-  `wife` int NOT NULL DEFAULT '0',
-  `morphMode` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `mountxpgive` int(11) NOT NULL DEFAULT 0,
+  `mount` int(11) NOT NULL DEFAULT -1,
+  `title` int(11) NOT NULL DEFAULT 0,
+  `wife` int(11) NOT NULL DEFAULT 0,
+  `morphMode` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `emotes` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT '',
-  `prison` bigint NOT NULL DEFAULT '0',
-  `server` int NOT NULL,
-  `logged` int DEFAULT '0',
+  `prison` bigint(20) NOT NULL DEFAULT 0,
+  `server` int(11) NOT NULL,
+  `logged` int(11) DEFAULT 0,
   `allTitle` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `parcho` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `timeDeblo` bigint DEFAULT NULL,
-  `noall` tinyint NOT NULL DEFAULT '0',
-  `cms_view_armor` tinyint(1) DEFAULT '0',
+  `timeDeblo` bigint(20) DEFAULT NULL,
+  `noall` tinyint(4) NOT NULL DEFAULT 0,
+  `cms_view_armor` tinyint(1) DEFAULT 0,
   `cms_message` varchar(255) DEFAULT 'Aucun message',
-  `cms_price` int DEFAULT '0',
-  `cms_on_market` tinyint(1) DEFAULT '0',
+  `cms_price` int(11) DEFAULT 0,
+  `cms_on_market` tinyint(1) DEFAULT 0,
   `deadInformation` varchar(255) NOT NULL DEFAULT '0,0,0,0',
-  `deathCount` int NOT NULL DEFAULT '0',
-  `totalKills` int NOT NULL DEFAULT '0',
-  `revive` tinyint NOT NULL DEFAULT '0',
+  `deathCount` int(11) NOT NULL DEFAULT 0,
+  `totalKills` int(11) NOT NULL DEFAULT 0,
+  `revive` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_players
@@ -13023,13 +13021,13 @@ CREATE TABLE `world_players` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_players_quests`;
 CREATE TABLE `world_players_quests` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `quest` int NOT NULL,
-  `finish` int NOT NULL,
-  `player` int NOT NULL,
-  `stepsValidation` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quest` int(11) NOT NULL,
+  `finish` int(11) NOT NULL,
+  `player` int(11) NOT NULL,
+  `stepsValidation` text CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- ----------------------------
 -- Records of world_players_quests
@@ -13041,8 +13039,8 @@ CREATE TABLE `world_players_quests` (
 DROP TABLE IF EXISTS `world_pubs`;
 CREATE TABLE `world_pubs` (
   `data` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `server` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `server` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of world_pubs
@@ -13053,14 +13051,14 @@ CREATE TABLE `world_pubs` (
 -- ----------------------------
 DROP TABLE IF EXISTS `world_servers`;
 CREATE TABLE `world_servers` (
-  `id` int NOT NULL DEFAULT '0',
-  `key` text,
-  `population` int DEFAULT '0',
-  `isSubscriberServer` int DEFAULT '1',
-  `uptime` bigint NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL DEFAULT 0,
+  `key` text DEFAULT NULL,
+  `population` int(11) DEFAULT 0,
+  `isSubscriberServer` int(11) DEFAULT 1,
+  `uptime` bigint(20) NOT NULL DEFAULT 0,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- ----------------------------
 -- Records of world_servers
