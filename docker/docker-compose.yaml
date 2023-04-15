@@ -10,7 +10,7 @@ services:
             - '450:450'
         volumes:
             - ./config/login.config.properties:/app/login.config.properties
-            
+
     starloco_game:
         image: starloco/game:latest
         restart: always
@@ -20,7 +20,7 @@ services:
             - '5555:5555'
         volumes:
             - ./config/game.config.properties:/app/game.config.properties
-            
+
     starloco_web:
         image: nginx:latest
         restart: always
@@ -41,7 +41,7 @@ services:
             - starloco_database
         volumes:
             - ./web:/var/www/html
-            
+
     starloco_database:
         image: mariadb:10.7
         restart: always
@@ -49,7 +49,7 @@ services:
             MYSQL_ROOT_PASSWORD: CYoEw5SaBv1kIk
         ports:
             - '3306:3306'
-        volumes: 
+        volumes:
             - dbdata:/var/lib/mysql
             - ./database/init:/docker-entrypoint-initdb.d/:ro
 
