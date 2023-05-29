@@ -1,1 +1,0 @@
-Invoke-PS2EXE .\StarLoco-Installer.ps1 .\StarLoco-Installer.exe -requireAdmin
