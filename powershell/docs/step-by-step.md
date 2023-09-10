@@ -61,8 +61,7 @@ Now, on your desktop, inside a folder named `StarLoco`, you must found 4 directo
 
 ### Apache configuration
 
-You can copy the folder `lang` from `web` folder inside `C:\Users\<your_username>\scoop\apps\apache\current\htdocs`, the folder `htdocs` must looks like this :
-![apache folder](https://raw.githubusercontent.com/StarLoco/StarLoco/main/apache-folder.png)
+You can copy the folder `lang` from `web` folder inside `C:\Users\<your_username>\scoop\apps\apache\current\htdocs`.
 
 ### MySQL configuration
 
