@@ -6,9 +6,9 @@ StarLoco's the most advanced public emulator of Dofus 1.39.8 written in Java. It
 
 ## How to use ?
 
-If you've no idea where to start, I recommend you to follow [this guide](docs/quickstart.md), which contains a script that will install and setup everything you need automatically.
+If you've no idea where to start, I recommend you to follow [this guide](powershell/docs/quickstart.md), which contains a script that will install and setup everything you need automatically.
 
-In case you've knowledge on how to use an emulator, you can follow [this guide](docs/step-by-step.md)
+In case you've knowledge on how to use an emulator, you can follow [this guide](powershell/docs/step-by-step.md)
 
 ## Community
 
