@@ -1,3 +1,5 @@
+USE starloco_game;
+
 create table quest_progress
 (
     account_id           int                   not null,
